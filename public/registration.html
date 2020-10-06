@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> REGISTER </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="signin.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style>
+		@media (min-width:768px) {
+    	.card-deck > .card
+    	{
+       		width: 29%;
+        	flex-wrap: wrap;
+        	flex: initial; 
+    	}
+}
+  </style>
+
+</head>
+
+<body>
+
+<div class='container'>
+    <div class='row'>
+        <div class='col'>
+            <div class="form-signin">
+            <center><h5 class='font-weight-normal'>Register here</h5></center>
+            <br>
+            <input type="email" class="form-control" id="mail" placeholder="Enter your email" name="mail" required>
+
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+
+            <input type="text" class="form-control" id="phno" placeholder="Enter your contact number" name="phno" required>
+          
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+
+            </div>    
+            <center>
+              <button type="submit" value="submit" class="btn btn-dark" onclick='register()'>Register</button>
+              <br><br>
+              <a href='login.html'>Have an account? Login here</a>
+            </center>
+        </div>    
+    </div>
+</div>
+</body> 
+
+<script>
+
+function register()
+{
+  let mail = document.getElementById('mail').value;
+  let name = document.getElementById('name').value;
+  let phno = document.getElementById('phno').value;
+  let password = document.getElementById('password').value;
+
+  $.ajax({
+    type: 'POST',
+    url: '/register',
+    data: {mail:mail,name:name,phno:phno,password:password},
+    success: function(res){
+      alert(res);
+    }
+  });
+
+}
+
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> LOGIN </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="signin.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style>
+		@media (min-width:768px) {
+    	.card-deck > .card
+    	{
+       		width: 29%;
+        	flex-wrap: wrap;
+        	flex: initial; 
+    	}
+}
+  </style>
+
+</head>
+
+<body>
+
+<div class='container'>
+    <div class='row'>
+        <div class='col'>
+            <div class="form-signin">
+            <center><h5 class='font-weight-normal'>Login here</h5></center>
+            <br>
+            <!-- <form method='POST' action='/login'> -->
+            <input type="email" class="form-control" id="mail" placeholder="Enter your email" name="mail" required>
+          
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+
+            </div>    
+            <center>
+              <button type="submit" value="submit" class="btn btn-dark" onclick='login()'>Login</button>
+            </center>
+            <!-- </form> -->
+        </div>    
+    </div>
+</div>
+</body> 
+
+<script>
+
+function login()
+{
+  let mail = document.getElementById('mail').value;
+  let password = document.getElementById('password').value;
+
+  $.ajax({
+    type: 'POST',
+    url: '/login',
+    data: {mail:mail,password:password},
+    success: function(res){
+      if(res == 'valid')
+      {
+        window.location.replace('home.html'); 
+      }
+    }
+  });
+
+}
+
+</script>
+
+</html>
