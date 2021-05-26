@@ -10,7 +10,7 @@ var con = mysql.createConnection({
 
 con.connect((err)=>{
     if(err) {
-      console.log('Please check your db connection...(turn on wamp in my case)');
+      console.log('Please check your db connection...');
       throw err;
     }
 });

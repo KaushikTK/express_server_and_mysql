@@ -12,11 +12,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()) ;
 app.use(session({secret: 'ssshhhhh'})); // secret is necessary for managing sessions
 
-
-// let register = require('./public/scripts/register');
-// let login = require('./public/scripts/login');
-// let get_info = require('./public/scripts/get_info');
-
 let register = require('./modeler/register');
 let login = require('./modeler/login');
 let get_info = require('./modeler/get_info');
@@ -37,9 +32,7 @@ app.post('/login',(req,res)=>{
 app.get('/get_mail',(req,res)=>{
     //const s = req.session;
     get_info.get_info(req,res);
-
 })
-
 
 // listen @ 3000
 app.listen(3000,()=>{
